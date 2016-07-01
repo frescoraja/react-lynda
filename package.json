@@ -1,0 +1,28 @@
+{
+  "name": "live-polling",
+  "version": "1.0.0",
+  "description": "Allows speakers to live-poll audience members",
+  "main": "app-server.js",
+  "dependencies": {
+    "babel-core": "^6.10.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "bootstrap": "^3.3.6",
+    "express": "^4.14.0",
+    "react": "^0.13.3",
+    "react-router": "^0.13.3",
+    "socket.io": "^1.4.8",
+    "socket.io-client": "^1.4.8",
+    "webpack": "^1.13.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "prestart": "webpack",
+    "start": "node app-server.js",
+    "pretest": "echo \"PRETEST, FOO\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Carter",
+  "license": "MIT"
+}

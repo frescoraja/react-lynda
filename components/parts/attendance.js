@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Attendance = React.createClass({
+class Attendance extends React.Component {
   addMemberRow(member, i) {
     return (
       <tr key={i}>
@@ -8,7 +8,7 @@ const Attendance = React.createClass({
         <td>{member.id}</td>
       </tr>
     );
-  },
+  }
 
   render() {
     return (
@@ -28,6 +28,6 @@ const Attendance = React.createClass({
       </div>
     );
   }
-});
+}
 
 module.exports = Attendance;

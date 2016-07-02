@@ -1,7 +1,7 @@
-const React = require('react');
-const Display = require('./display');
-const Join = require('./parts/join');
-const Ask = require('./parts/ask');
+import React from 'react';
+import Display from './parts/display';
+import Join from './parts/join';
+import Ask from './parts/ask';
 
 const Audience = React.createClass({
   render() {
@@ -13,12 +13,11 @@ const Audience = React.createClass({
 
             <Display if={!this.props.currentQuestion}>
               <h2>Welcome {this.props.member.name}</h2>
-              <p>There are {this.props.audience.length} audience members connected</p>
-              <p>Questions will be displayed here</p>
+              <p>{this.props.audience.length} audience members connected</p>
+              <p>Questions will appear here.</p>
             </Display>
 
             <Display if={this.props.currentQuestion}>
-              <h1>{this.props.currentQuestion.q}</h1>
               <Ask question={this.props.currentQuestion} emit={this.props.emit} />
             </Display>
 

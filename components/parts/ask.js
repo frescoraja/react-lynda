@@ -1,12 +1,9 @@
-const React = require('react');
-const Display = require('../display');
+import React from 'react';
+import Display from './display';
 
 const Ask = React.createClass({
   getInitialState() {
-    return {
-      choices: [],
-      answer: undefined
-    };
+    return { choices: [], answer: undefined };
   },
 
   componentWillMount() {
@@ -27,11 +24,8 @@ const Ask = React.createClass({
   },
 
   select(choice) {
-    console.log("choice %s", choice);
     this.setState({ answer: choice });
-    console.log(this);
     sessionStorage.answer = choice;
-    console.log("state: %j", this.state);
     this.props.emit('answer', {
       question: this.props.question,
       choice: choice
@@ -43,7 +37,7 @@ const Ask = React.createClass({
     return (
       <button key={i}
               className={"col-xs-12 col-sm-6 btn btn-" + buttonTypes[i]}
-              onClick={this.select.bind(this, choice)}>
+              onClick={this.select.bind(null, choice)}>
         {choice}: {this.props.question[choice]} 
       </button>
     );
@@ -52,12 +46,12 @@ const Ask = React.createClass({
   render() {
     return (
       <div id="currentQuestion">
-        <Display if={this.state.answer !== 'undefined'}>
+        <Display if={this.state.answer}>
           <h3>You answered: {this.state.answer}</h3>
           <p>{this.props.question[this.state.answer]}</p>
         </Display>
 
-        <Display if={this.state.answer === 'undefined'}>
+        <Display if={!this.state.answer}>
           <div className="row">
             {this.state.choices.map(this.addChoiceButton)}
           </div>

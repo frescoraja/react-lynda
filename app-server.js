@@ -1,14 +1,14 @@
-const express = require('express');
-const app = express();
-const _ = require('underscore');
+var express = require('express');
+var _ = require('underscore');
+var app = express();
 
-const connections = [];
-const audience = [];
-let speaker = {};
-let title = "Untitled Presentation";
-const questions = require('./app-questions');
-let currentQuestion = false;
-let results = {
+var connections = [];
+var title = "Untitled Presentation";
+var audience = [];
+var speaker = {};
+var questions = require('./app-questions');
+var currentQuestion = false;
+var results = {
   a: 0,
   b: 0,
   c: 0,
@@ -18,13 +18,13 @@ let results = {
 app.use(express.static('./public'));
 app.use(express.static('./node_modules/bootstrap/dist'));
 
-const server = app.listen(3000);
-const io = require('socket.io').listen(server);
+var server = app.listen(3000);
+var io = require('socket.io').listen(server);
 
-io.sockets.on('connection', (socket) => {
+io.sockets.on('connection', function(socket) {
 
   socket.once('disconnect', function() {
-    const member = _.findWhere(audience, { id: this.id });
+    var member = _.findWhere(audience, { id: this.id });
     if (member) {
       audience.splice(audience.indexOf(member), 1);
       io.sockets.emit('audience', audience);
@@ -41,16 +41,15 @@ io.sockets.on('connection', (socket) => {
   })
 
   socket.on('join', function(payload) {
-    const newMember = { 
+    var member = { 
       id: this.id,
       name: payload.name,
       type: 'audience'
     };
-    this.emit('joined', newMember);
-    audience.push(newMember);
+    this.emit('joined', member);
+    audience.push(member);
     io.sockets.emit('audience', audience);
     console.log("Audience joined: %s", payload.name);
-
   });
 
   socket.on('start', function(payload) {

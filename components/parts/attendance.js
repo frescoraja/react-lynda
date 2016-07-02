@@ -1,4 +1,4 @@
-const React = require('react');
+import React from 'react';
 
 const Attendance = React.createClass({
   addMemberRow(member, i) {

@@ -9,9 +9,11 @@ const Whoops404 = React.createClass({
         <h1>Whoops..</h1>
         <p>We cannot find the page you have requested.
         Were you looking for one of these: </p>
+
         <Link to="/">Join as Audience</Link>
         <Link to="/speaker">Start the presentation</Link>
         <Link to="/board">View the board</Link>
+
       </div>
     );
   }

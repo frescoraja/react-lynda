@@ -31547,6 +31547,8 @@
 	
 	var _display2 = _interopRequireDefault(_display);
 	
+	var _reactRouter = __webpack_require__(157);
+	
 	var Ask = _react2['default'].createClass({
 	  displayName: 'Ask',
 	
@@ -31610,6 +31612,11 @@
 	          'p',
 	          null,
 	          this.props.question[this.state.answer]
+	        ),
+	        _react2['default'].createElement(
+	          _reactRouter.Link,
+	          { to: '/board' },
+	          'See results..'
 	        )
 	      ),
 	      _react2['default'].createElement(

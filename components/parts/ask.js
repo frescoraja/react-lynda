@@ -1,5 +1,6 @@
 import React from 'react';
 import Display from './display';
+import { Link } from 'react-router';
 
 const Ask = React.createClass({
   getInitialState() {
@@ -49,6 +50,7 @@ const Ask = React.createClass({
         <Display if={this.state.answer}>
           <h3>You answered: {this.state.answer}</h3>
           <p>{this.props.question[this.state.answer]}</p>
+          <Link to="/board">See results..</Link>
         </Display>
 
         <Display if={!this.state.answer}>
